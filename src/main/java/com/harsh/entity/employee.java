@@ -1,27 +1,40 @@
 package com.harsh.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-
-
+@Entity
 public class employee {
 
-	
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String gender;
 	private int salary;
 	
+
+	 
+
+
 	public employee() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
+	
+	
 
-	public employee(String name, String gender, int salary) {
+	public employee( String name, String gender, int salary) {
 		super();
 //		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -57,8 +70,11 @@ public class employee {
 
 	@Override
 	public String toString() {
-		return "employee [ name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
+		return "employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
 	}
+
+	
+
 	
 	
 	

@@ -3,6 +3,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
+import com.harsh.confi.empConfiguration;
 import com.harsh.entity.employee;
 
 
@@ -11,22 +13,25 @@ public class employeeRunner {
 	public static void main(String[] args) {
 		
 
- employee emp = new employee("aman dixit","male",200000);
+ employee emp = new employee("Harsh mishra","male",200000);
       
       
       
       
- Configuration cfg =new Configuration().configure("hibernate.cfg.xml");
+ Session session =  empConfiguration.getSessionFactory().openSession();
+	Transaction tx = session.beginTransaction();
+      
+      
+      
 
-          SessionFactory sessionFactory= cfg.buildSessionFactory();
-          Session session=sessionFactory.openSession();
-   
-      Transaction tx = session.beginTransaction();
+		
+		
+		
       
       
-//      save data........
-//      session.persist(emp);
-      
+//     save data........
+     session.persist(emp);
+//      
 //      remove data........
 //     emp= session.get(employee.class, 1);
 //     session.remove(emp);
