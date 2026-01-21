@@ -1,11 +1,13 @@
 package com.harsh.main;
+import java.util.List;
+
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import com.harsh.confi.empConfiguration;
 import com.harsh.entity.employee;
+
 
 
 public class employeeRunner {
@@ -24,13 +26,16 @@ public class employeeRunner {
       
       
 
+		Query<employee> query =  session.createQuery("From employee",employee.class);
 		
 		
-		
-      
-      
+   
+      System.out.println(query.list());
+	
+	
+	
 //     save data........
-     session.persist(emp);
+//     session.persist(emp);
 //      
 //      remove data........
 //     emp= session.get(employee.class, 1);
