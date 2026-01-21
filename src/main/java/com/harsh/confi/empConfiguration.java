@@ -28,5 +28,5 @@ public class empConfiguration {
 		Metadata metaData = new MetadataSources(ssr).addAnnotatedClass(com.harsh.entity.employee.class).getMetadataBuilder().build();
 		SessionFactory sessionFactory = metaData.buildSessionFactory();
 		return sessionFactory;
-		//ghnhfbgdbdbcsvfvfev dcs d 
+		
 }}
