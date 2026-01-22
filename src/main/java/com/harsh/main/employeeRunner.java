@@ -1,8 +1,8 @@
 package com.harsh.main;
-import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.MutationQuery;
 import org.hibernate.query.Query;
 
 import com.harsh.confi.empConfiguration;
@@ -23,7 +23,14 @@ public class employeeRunner {
  Session session =  empConfiguration.getSessionFactory().openSession();
 	Transaction tx = session.beginTransaction();
       
-      
+//      String hql="update employee set name= :upname where id=:id";
+//      
+//  MutationQuery query =    session.createMutationQuery(hql);
+// 
+// query.setParameter("upname","Prem dixit");
+// query.setParameter("id", 1);
+// 
+// query.executeUpdate();
       
 
 		Query<employee> query =  session.createQuery("From employee",employee.class);
