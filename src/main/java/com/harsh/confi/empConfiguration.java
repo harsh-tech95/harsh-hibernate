@@ -19,13 +19,13 @@ public class empConfiguration {
 		properties.put(Environment.JAKARTA_JDBC_URL, "jdbc:mysql://localhost:3306/hibernate");
 		properties.put(Environment.JAKARTA_JDBC_USER, "root");
 		properties.put(Environment.JAKARTA_JDBC_PASSWORD, "root");
-		properties.put(Environment.HBM2DDL_AUTO, "update");
+		properties.put(Environment.HBM2DDL_AUTO, "create");
 		properties.put(Environment.SHOW_SQL, "true");
 		properties.put(Environment.FORMAT_SQL, "true");
 		
 		
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(properties).build();
-		Metadata metaData = new MetadataSources(ssr).addAnnotatedClass(com.harsh.entity.employee.class).getMetadataBuilder().build();
+		Metadata metaData = new MetadataSources(ssr).addAnnotatedClasses(com.harsh.entity.employee.class,com.harsh.entity.Address.class).getMetadataBuilder().build();
 		SessionFactory sessionFactory = metaData.buildSessionFactory();
 		return sessionFactory;
 		

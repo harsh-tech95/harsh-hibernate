@@ -6,6 +6,7 @@ import org.hibernate.query.MutationQuery;
 import org.hibernate.query.Query;
 
 import com.harsh.confi.empConfiguration;
+import com.harsh.entity.Address;
 import com.harsh.entity.employee;
 
 
@@ -17,7 +18,9 @@ public class employeeRunner {
 
  employee emp = new employee("Harsh mishra","male",200000);
       
-      
+ Address add=new Address( "Bareilly","Uttar Predesh");
+ 
+ emp.setAddress(add);
       
       
  Session session =  empConfiguration.getSessionFactory().openSession();
@@ -33,16 +36,18 @@ public class employeeRunner {
 // query.executeUpdate();
       
 
-		Query<employee> query =  session.createQuery("From employee",employee.class);
-		
-		
-   
-      System.out.println(query.list());
+//		Query<employee> query =  session.createQuery("From employee",employee.class);
+//		
+//		
+//   
+//      System.out.println(query.list());
 	
 	
 	
 //     save data........
-//     session.persist(emp);
+	
+	session.persist(add);
+     session.persist(emp);
 //      
 //      remove data........
 //     emp= session.get(employee.class, 1);
@@ -63,4 +68,5 @@ public class employeeRunner {
       
 	}
 
+	
 }
