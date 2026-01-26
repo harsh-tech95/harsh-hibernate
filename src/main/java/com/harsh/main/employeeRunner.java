@@ -16,11 +16,13 @@ public class employeeRunner {
 	public static void main(String[] args) {
 		
 
- employee emp = new employee("Harsh mishra","male",200000);
+ employee emp = new employee("Harsh mishra","male",500000);
       
  Address add=new Address( "Bareilly","Uttar Predesh");
- 
  emp.setAddress(add);
+
+ add.setEmployee(emp);
+ 
       
       
  Session session =  empConfiguration.getSessionFactory().openSession();
@@ -46,13 +48,13 @@ public class employeeRunner {
 	
 //     save data........
 	
-	session.persist(add);
-     session.persist(emp);
-//      
-//      remove data........
-//     emp= session.get(employee.class, 1);
-//     session.remove(emp);
+//	session.persist(add);
+//     session.persist(emp);
       
+//      remove data........
+    
+//       emp= session.get(employee.class, 1);
+//     session.remove(emp);
       
 //      update data........
 //      emp=session.get(employee.class, 1);
@@ -61,8 +63,15 @@ public class employeeRunner {
       
       
 //      select data.......
-//     emp= session.get(employee.class, 1);
-//      System.out.println(emp);
+//     add=session.find(Address.class, 1);
+//     System.out.println(add);
+//      System.out.println(add.getEmployee());
+	
+	
+	emp=session.find(employee.class, 1);
+	System.out.println(emp);
+	System.out.println(emp.getAddress());
+
       
       tx.commit();
       
