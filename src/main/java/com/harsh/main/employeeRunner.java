@@ -23,20 +23,24 @@ public class employeeRunner {
  emp.setName("harsh");
  emp.setGender("m");
  emp.setSalary(200000);
+ 
       
  Address add1=new Address();
  add1.setCity("bareilly");
  add1.setState("up");
+ add1.setEmployee(emp);
  
  Address add2=new Address();
- 
  add2.setCity("badaun");
  add2.setState("up");
+ add2.setEmployee(emp);
+
  
  Address add3=new Address();
- 
  add3.setCity("sajahapur");
  add3.setState("up");
+ add3.setEmployee(emp);
+
  
  
  ArrayList<Address> listofAddresses = new ArrayList<>();
@@ -102,11 +106,11 @@ emp.setAddresses(listofAddresses);
 	
 //     save data........
 	
-	session.persist(add1);
-	session.persist(add2);
-	session.persist(add3);
+//	session.persist(add1);
+//	session.persist(add2);
+//	session.persist(add3);
 
-     session.persist(emp);
+//     session.persist(emp);
       
 //      remove data........
     
@@ -125,9 +129,9 @@ emp.setAddresses(listofAddresses);
 //      System.out.println(add.getEmployee());
 	
 	
-//	emp=session.find(employee.class, 1);
-//	System.out.println(emp);
-//	System.out.println(emp.getAddress());
+	Address add=session.find(Address.class, 1);
+	System.out.println(add);
+	System.out.println(add.getEmployee());
 
       
       tx.commit();
