@@ -1,10 +1,15 @@
 package com.harsh.entity;
 
+//import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
+//import jakarta.persistence.OneToOne;
 
 @Entity
 public class employee {
@@ -16,8 +21,8 @@ public class employee {
 	private String gender;
 	private int salary;
 	
-	@OneToOne
-	private Address address;
+	@OneToMany (cascade = CascadeType.ALL)
+	private List<Address> addresses;
 	 
 
 
@@ -38,14 +43,22 @@ public class employee {
 
 
 
-	public Address getAddress() {
-		return address;
+
+
+
+
+
+
+
+
+	public List<Address> getAddresses() {
+		return addresses;
 	}
 
 
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 

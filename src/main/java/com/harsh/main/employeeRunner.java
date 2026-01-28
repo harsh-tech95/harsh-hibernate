@@ -1,5 +1,7 @@
 package com.harsh.main;
 
+import java.util.ArrayList;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.MutationQuery;
@@ -16,17 +18,69 @@ public class employeeRunner {
 	public static void main(String[] args) {
 		
 
- employee emp = new employee("Harsh mishra","male",500000);
+ employee emp = new employee();
+ 
+ emp.setName("harsh");
+ emp.setGender("m");
+ emp.setSalary(200000);
       
- Address add=new Address( "Bareilly","Uttar Predesh");
- emp.setAddress(add);
-
- add.setEmployee(emp);
+ Address add1=new Address();
+ add1.setCity("bareilly");
+ add1.setState("up");
+ 
+ Address add2=new Address();
+ 
+ add2.setCity("badaun");
+ add2.setState("up");
+ 
+ Address add3=new Address();
+ 
+ add3.setCity("sajahapur");
+ add3.setState("up");
+ 
+ 
+ ArrayList<Address> listofAddresses = new ArrayList<>();
+ 
+ listofAddresses.add(add1);
+ listofAddresses.add(add2);
+ listofAddresses.add(add3);
+ 
+emp.setAddresses(listofAddresses); 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+// emp.setAddress(add);
+//
+// add.setEmployee(emp);
  
       
       
  Session session =  empConfiguration.getSessionFactory().openSession();
 	Transaction tx = session.beginTransaction();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
       
 //      String hql="update employee set name= :upname where id=:id";
 //      
@@ -48,8 +102,11 @@ public class employeeRunner {
 	
 //     save data........
 	
-//	session.persist(add);
-//     session.persist(emp);
+	session.persist(add1);
+	session.persist(add2);
+	session.persist(add3);
+
+     session.persist(emp);
       
 //      remove data........
     
@@ -68,9 +125,9 @@ public class employeeRunner {
 //      System.out.println(add.getEmployee());
 	
 	
-	emp=session.find(employee.class, 1);
-	System.out.println(emp);
-	System.out.println(emp.getAddress());
+//	emp=session.find(employee.class, 1);
+//	System.out.println(emp);
+//	System.out.println(emp.getAddress());
 
       
       tx.commit();
